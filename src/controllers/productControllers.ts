@@ -9,3 +9,14 @@ export async function getAll(_req: Request, res: Response) {
     console.error(error);
   }
 }
+
+export async function create(req: Request, res: Response) {
+  try {
+    const { name, amount } = req.body;
+    console.log(typeof amount);
+    const result = await productServices.create(name, amount);
+    return res.status(201).json(result);
+  } catch (error) {
+    console.error(error);
+  }
+}
