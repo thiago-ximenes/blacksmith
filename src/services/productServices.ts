@@ -6,6 +6,10 @@ export async function getAll() {
 }
 
 export async function create(name: string, amount: string) {
-  const rows = await productsModel.create(name, amount);
-  return rows;
+  try {
+    const rows = await productsModel.create(name, amount);
+    return rows;
+  } catch (error) {
+    console.error(error);
+  }
 }

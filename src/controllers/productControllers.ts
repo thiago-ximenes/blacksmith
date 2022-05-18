@@ -11,10 +11,10 @@ export async function getAll(_req: Request, res: Response) {
 }
 
 export async function create(req: Request, res: Response) {
+  const { name, amount } = req.body;
   try {
-    const { name, amount } = req.body;
-    console.log(typeof amount);
     const result = await productServices.create(name, amount);
+    console.log(result);
     return res.status(201).json(result);
   } catch (error) {
     console.error(error);
